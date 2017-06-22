@@ -16,7 +16,7 @@ void setup(){
   coord[1][2] = 0;
   for(int j = 2; j <= ballsCount; j++){
     coord[j][1] =  random(sizeI, width-sizeI);
-    coord[j][2] = -1 * random(0,200);
+    coord[j][2] = -1 * random(0,300);
   }
   image[0] = loadImage("icecream.png");
   image[1] = loadImage("stitch.png");
@@ -36,10 +36,10 @@ void draw(){
         score -= 1;
       }
      if(coord[i][2]+70 >= y){
-       if (abs(mouseX+25 - coord[i][1]) <= 35) {
+       if (abs(mouseX - (coord[i][1] + sizeI/2)) <= sizeI/2+75 - 25) {
          coord[i][2] = 0;
          score ++;
-         float r2 = random(10, width - 10);
+         float r2 = random(sizeI, width - sizeI);
          coord[i][1] = r2;
        }
      }
@@ -50,5 +50,5 @@ void draw(){
     stop();
     
   }
-  image(image[1],mouseX, y, 150, 150);
+  image(image[1],mouseX-75, y, 150, 150);
 }
